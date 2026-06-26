@@ -142,7 +142,7 @@ export default function Home() {
 
           transition={{ duration:1 }}
 
-          src="https://undraw.co/api/illustrations/security.svg"
+          src="https://placehold.co/500x400"
 
           className="w-[500px]"
 
