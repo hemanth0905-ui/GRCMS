@@ -1,31 +1,23 @@
 from fastapi import APIRouter, UploadFile, File
-import shutil
 import os
 
 router = APIRouter(
-    prefix="/upload",
-    tags=["Upload"]
+    prefix="/uploads",
+    tags=["Uploads"]
 )
 
-UPLOAD_FOLDER = "uploads"
+UPLOAD_DIR = "uploads"
 
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-
+os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 @router.post("/")
-async def upload_file(
-    file: UploadFile = File(...)
-):
+async def upload_file(file: UploadFile = File(...)):
+    file_path = os.path.join(UPLOAD_DIR, file.filename)
 
-    filepath = os.path.join(
-        UPLOAD_FOLDER,
-        file.filename
-    )
-
-    with open(filepath, "wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
+    with open(file_path, "wb") as buffer:
+        buffer.write(await file.read())
 
     return {
-        "filename": file.filename,
-        "message": "Uploaded Successfully"
+        "message": "File uploaded successfully",
+        "filename": file.filename
     }

@@ -57,3 +57,6 @@ def root():
     return {
         "message": "Governance Compliance Management System API is Running"
     }
+from app.api.uploads import router as upload_router
+
+app.include_router(upload_router)
