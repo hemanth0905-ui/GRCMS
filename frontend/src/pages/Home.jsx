@@ -1,33 +1,37 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   FaShieldAlt,
+  FaClipboardCheck,
   FaTasks,
   FaChartLine,
-  FaClipboardCheck,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 export default function Home() {
   const features = [
     {
       icon: <FaShieldAlt size={40} />,
       title: "Governance",
-      desc: "Manage enterprise compliance rules efficiently.",
+      description:
+        "Create and manage enterprise compliance policies and governance rules.",
     },
     {
       icon: <FaTasks size={40} />,
       title: "Task Assignment",
-      desc: "Assign compliance tasks to departments and users.",
-    },
-    {
-      icon: <FaChartLine size={40} />,
-      title: "Analytics",
-      desc: "Monitor compliance with interactive dashboards.",
+      description:
+        "Assign compliance tasks to departments and employees with deadlines.",
     },
     {
       icon: <FaClipboardCheck size={40} />,
       title: "Audit Logs",
-      desc: "Track every activity performed inside the system.",
+      description:
+        "Track every activity performed within the system for accountability.",
+    },
+    {
+      icon: <FaChartLine size={40} />,
+      title: "Analytics",
+      description:
+        "Visualize compliance status with real-time reports and dashboards.",
     },
   ];
 
@@ -35,29 +39,32 @@ export default function Home() {
     <div className="min-h-screen bg-slate-100">
 
       {/* Navbar */}
-
-      <nav className="flex justify-between items-center px-10 py-5 bg-white shadow">
+      <nav className="bg-white shadow-md px-10 py-5 flex justify-between items-center sticky top-0 z-50">
 
         <h1 className="text-3xl font-bold text-blue-700">
           GRCMS
         </h1>
 
-        <div className="space-x-8 font-medium">
+        <div className="flex gap-8 items-center">
 
-          <a href="#features">Features</a>
+          <a href="#features" className="hover:text-blue-600">
+            Features
+          </a>
 
-          <a href="#about">About</a>
+          <a href="#about" className="hover:text-blue-600">
+            About
+          </a>
 
           <Link
             to="/login"
-            className="bg-blue-600 text-white px-5 py-2 rounded-lg"
+            className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700"
           >
             Login
           </Link>
 
           <Link
             to="/register"
-            className="border px-5 py-2 rounded-lg"
+            className="border border-blue-600 text-blue-700 px-5 py-2 rounded-lg hover:bg-blue-50"
           >
             Register
           </Link>
@@ -66,18 +73,14 @@ export default function Home() {
 
       </nav>
 
-      {/* Hero */}
-
-      <section className="max-w-7xl mx-auto px-10 py-24 flex items-center justify-between">
+      {/* Hero Section */}
+      <section className="max-w-7xl mx-auto px-10 py-20 flex flex-col lg:flex-row items-center justify-between gap-10">
 
         <motion.div
-
-          initial={{ opacity:0,x:-80 }}
-
-          animate={{ opacity:1,x:0 }}
-
-          transition={{ duration:1 }}
-
+          initial={{ opacity: 0, x: -80 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex-1"
         >
 
           <h1 className="text-6xl font-bold leading-tight">
@@ -89,113 +92,86 @@ export default function Home() {
             Compliance
 
             <span className="text-blue-700">
-
-              {" "}Management
-
+              {" "}Management System
             </span>
 
           </h1>
 
-          <p className="mt-6 text-xl text-gray-600">
+          <p className="mt-8 text-xl text-gray-600">
 
-            Enterprise-grade Governance, Risk and Compliance
-
-            platform for organizations.
+            A centralized enterprise platform to manage governance,
+            compliance rules, assignments, reports, audit logs,
+            notifications and analytics.
 
           </p>
 
-          <div className="mt-8 flex gap-5">
+          <div className="mt-10 flex gap-5">
 
             <Link
-
               to="/register"
-
-              className="bg-blue-600 text-white px-7 py-4 rounded-xl"
-
+              className="bg-blue-600 text-white px-7 py-4 rounded-xl hover:bg-blue-700"
             >
-
               Get Started
-
             </Link>
 
             <Link
-
               to="/login"
-
-              className="border border-blue-600 px-7 py-4 rounded-xl"
-
+              className="border border-blue-600 text-blue-700 px-7 py-4 rounded-xl hover:bg-blue-50"
             >
-
               Login
-
             </Link>
 
           </div>
 
         </motion.div>
 
-        <motion.img
+        <motion.div
+          initial={{ opacity: 0, x: 80 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          className="flex-1 flex justify-center"
+        >
 
-          initial={{ opacity:0,x:80 }}
+          <img
+            src="https://placehold.co/600x450?text=GRCMS"
+            alt="GRCMS"
+            className="rounded-3xl shadow-xl"
+          />
 
-          animate={{ opacity:1,x:0 }}
-
-          transition={{ duration:1 }}
-
-          src="https://placehold.co/500x400"
-
-          className="w-[500px]"
-
-        />
+        </motion.div>
 
       </section>
 
       {/* Features */}
-
       <section
-
         id="features"
-
-        className="max-w-7xl mx-auto py-16"
-
+        className="max-w-7xl mx-auto px-10 py-20"
       >
 
-        <h2 className="text-4xl font-bold text-center mb-14">
-
-          Platform Features
-
+        <h2 className="text-4xl font-bold text-center mb-16">
+          Enterprise Features
         </h2>
 
-        <div className="grid grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
-          {features.map((item,index)=>(
+          {features.map((feature, index) => (
 
             <motion.div
-
               key={index}
-
-              whileHover={{ scale:1.05 }}
-
+              whileHover={{ scale: 1.05 }}
               className="bg-white p-8 rounded-3xl shadow-lg"
-
             >
 
-              <div className="text-blue-700">
-
-                {item.icon}
-
+              <div className="text-blue-600">
+                {feature.icon}
               </div>
 
               <h3 className="text-2xl font-bold mt-5">
-
-                {item.title}
-
+                {feature.title}
               </h3>
 
               <p className="mt-3 text-gray-600">
-
-                {item.desc}
-
+                {feature.description}
               </p>
 
             </motion.div>
@@ -206,25 +182,48 @@ export default function Home() {
 
       </section>
 
-      {/* Footer */}
+      {/* About */}
+      <section
+        id="about"
+        className="bg-white py-20"
+      >
 
-      <footer className="bg-blue-700 text-white mt-20">
+        <div className="max-w-6xl mx-auto text-center px-10">
 
-        <div className="max-w-7xl mx-auto py-10 flex justify-between">
-
-          <h2 className="text-3xl font-bold">
-
-            GRCMS
-
+          <h2 className="text-4xl font-bold mb-8">
+            About GRCMS
           </h2>
 
-          <div>
+          <p className="text-lg text-gray-600 leading-8">
 
-            <p>Privacy Policy</p>
+            Governance & Compliance Management System (GRCMS) helps
+            organizations automate compliance management by providing
+            centralized rule management, employee assignments,
+            compliance tracking, audit logging, reporting,
+            analytics, and document uploads.
 
-            <p>Terms</p>
+          </p>
 
-            <p>Help Center</p>
+        </div>
+
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-blue-700 text-white py-8 mt-10">
+
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-10">
+
+          <h2 className="text-2xl font-bold">
+            GRCMS
+          </h2>
+
+          <div className="flex gap-6 mt-4 md:mt-0">
+
+            <span>Privacy Policy</span>
+
+            <span>Terms</span>
+
+            <span>Help Center</span>
 
           </div>
 

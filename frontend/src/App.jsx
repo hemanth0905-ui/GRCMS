@@ -1,3 +1,4 @@
+import Upload from "./pages/Upload";
 import { Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -27,9 +28,11 @@ function App() {
       <Route path="/assignments" element={<Assignments/>}/>
       <Route path="/notifications" element={<Notifications/>}/>
       <Route path="/reports" element={<Reports/>}/>
+      <Route path="/upload" element={<Upload />} />
       <Route path="/analytics" element={<Analytics />} />
       <Route path="/audit" element={<AuditLogs />} />
       <Route path="/settings" element={<Profile/>}/>
+    
     </Routes>
   );
 }

@@ -55,3 +55,6 @@ export default function Sidebar() {
   );
 
 }
+<Link to="/upload">
+  📤 Upload Evidence
+</Link>
